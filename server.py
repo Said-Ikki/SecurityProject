@@ -27,14 +27,19 @@ def hello_world():
     approved_ip_addresses.append(actual_ip) # adds IP to allowed IPs
     return actual_ip
 
-@app.route("/", methods=['GET', 'POST'])
-def thing():
+@app.route("/")
+def home():
+    return  render_template("home.html")
+
+@app.route("/login", methods=['GET', 'POST'])
+def login():
+    print(f"Request from IP: {request.remote_addr}, Approved IPs: {approved_ip_addresses}")
     if request.remote_addr not in approved_ip_addresses: # if this comes from an unvalidated UP
         #return "no approved IP" # show them one screen
-        return  render_template("aceess_denied.html")
+        return  render_template("access-denied.html")
     else:
         #return "whats up bro?" # show them a different screen
-        return render_template("aceess_granted.html")
+        return render_template("access-granted.html")
 
 #if __name__ == "__main__":
 app.run(host="0.0.0.0", port=5000)
@@ -45,3 +50,4 @@ app.run(host="0.0.0.0", port=5000)
 # everything else is hand-coded by Said, yours truly
 # to see results without the html pages, there is a commented line above each 'return' stmt
 # uncomment them
+
