@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ACCESS DENIED</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+</head>
+<body style="background-color: darkred; height: auto; display: flex; justify-content: center; align-items: center;">
+    <div style="border-style: solid; border-color: white; width: 900px; height: auto; margin: 40px">
+        <div style="margin-top: 150px">
+            <h1 class="shadow" style="font-size: 60px">ACCESS DENIED</h1>
+            <p>ENSURE USER HAS A VALIDATED ACCOUNT</p>
+        </div>
+        <div style="justify-content: center; display: flex; margin-top:30px; margin-bottom: 150px"><a href="{{ url_for('home') }}" class="btn">OK</a></div>
+    </div>
+</body>
+</html>
