@@ -44,10 +44,3 @@ def login():
 #if __name__ == "__main__":
 app.run(host="0.0.0.0", port=5000)
 
-### DISCLOSURE ###
-# THE HTML PAGES ARE CREATED BY CHATGPT
-# they are intended to be a stand-in for what the system *could* achieve
-# everything else is hand-coded by Said, yours truly
-# to see results without the html pages, there is a commented line above each 'return' stmt
-# uncomment them
-

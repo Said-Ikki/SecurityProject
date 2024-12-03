@@ -153,12 +153,14 @@ if __name__ == '__main__':
                 public_sender = RSA.importKey(open('public.pem').read()) # use different encryptor provided by server
                 cipher = PKCS1_OAEP.new(public_sender) # get server encryptor
                 msg = cipher.encrypt(ip_address.encode()) # encrypt IP address as msg
+                msg2 = cipher.encrypt( "127.0.0.1".encode() )
                 # this github has all files squished together
                 # ideally this code only has access to the public key for the server
                 # so it can only encrypt, reducing vulnerability
 
                 print("...Checking Status...") # send msg
-                print(requests.post(url="http://192.168.250.68:5000/validate", data=msg).json)
+                print(requests.post(url="http://172.26.16.1:5000/validate", data=msg).json)
+                print(requests.post(url="http://172.26.16.1:5000/validate", data=msg2).json)
             else: # if the info doesnt match
                 print('Login failed') # login failed
             print("-------------------")
