@@ -28,6 +28,8 @@ def create_keys(): # creates the private and public keys
 
 def write_user_info(driver, encUsername, encPassword): # write encrypted unser info to files
     try:
+        print("writing")
+        os.mkdir(driver + ":\\Top Secret Artifact")
         os.mkdir(driver + ":\\Top Secret Artifact\\Login Files") # check if this file is ok to write to
         f = open(str(driver + ":\\Top Secret Artifact\\Login Files\\user_info_1.txt"), "wb") #write the username to file 1
         f.write(encUsername)
@@ -101,11 +103,14 @@ if __name__ == '__main__':
         encPassword = cipher.encrypt(new_password.encode())
 
         # save it somewhere
+        isGood = False
         for d in drives: # save it in all drives
             didWrite = write_user_info(d, encUsername, encPassword)
-        if didWrite == False: # if it wasn't able to save, it was because no USB was inserted
+            if didWrite == True:
+                isGood = True
+        if isGood == False: # if it wasn't able to save, it was because no USB was inserted
             print("Failed to save information. Please Insert Your Ultra-Secret Super-Duper Mega-USB before proceeding ")
-        elif didWrite == True: # otherwise, its good
+        elif isGood == True: # otherwise, its good
             print("Successfully Saved Information")
 
         #try:
